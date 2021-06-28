@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.FeeManagement.ServiceFile.UserDaoImpl;
+import com.FeeManagement.ServiceFile.UserService;
 import com.FeeManagement.entityFile.Login;
 import com.FeeManagement.entityFile.User;
 
 @Controller
 public class LoginController {
 	@Autowired
-	UserDaoImpl userDaoImpl;
+	UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest req, HttpServletResponse res) {
@@ -31,7 +32,7 @@ public class LoginController {
 			@ModelAttribute("login") Login login) {
 		ModelAndView mav = null;
 
-		User user = userDaoImpl.validateUser(login);
+		User user = userService.validateUser(login);
 
 		if (null != user) {
 			mav = new ModelAndView("welcome");
@@ -40,7 +41,6 @@ public class LoginController {
 			mav = new ModelAndView("login");
 			mav.addObject("message", "Username or Password is wrong!!");
 		}
-
 		return mav;
 	}
 }

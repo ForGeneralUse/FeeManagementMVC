@@ -21,14 +21,15 @@ public class UserDaoImpl implements UserDao {
 	JdbcTemplate jdbcTemplate;
 	
 	@Override
-	public void register(Student student) {
+	public int register(Student student) {
 		String Regsql = "insert into users values(?,?,?,?,?,?,?,?,?)";
-		 jdbcTemplate.update(Regsql, new Object[] { student.getUserName(), student.getPassword(), student.getfName(),
+		 return jdbcTemplate.update(Regsql, new Object[] { student.getUserName(), student.getPassword(), student.getfName(),
 				     student.getmName(),student.getlName(),student.getYearOfJoin(), student.getEmail(), student.getBranch(), student.getDob() });
 	}
 	
 	@Override
-	public void register(User user) {
+	public int register(User user) {
+		return 0;
 		// TODO Auto-generated method stub
 		
 	}

@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.FeeManagement.ServiceFile.UserDaoImpl;
+import com.FeeManagement.ServiceFile.UserService;
 import com.FeeManagement.entityFile.User;
 
 @Controller
 public class RegistrationController {
 	
 		@Autowired
-		public UserDaoImpl userDao;
+		public UserService userService;
 		
 		@RequestMapping(value="/register", method= RequestMethod.GET)
 		public ModelAndView showRegister(HttpServletRequest req, HttpServletResponse res) {
@@ -31,7 +31,7 @@ public class RegistrationController {
 		
 		@RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
 		public ModelAndView addUser(HttpServletRequest req, HttpServletResponse res, @ModelAttribute("user") User user) {
-			userDao.register(user);
+			userService.register(user);
 			
 			return new ModelAndView("welcome", "username", user.getUserName());
 			
