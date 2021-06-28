@@ -26,6 +26,12 @@ public class UserDaoImpl implements UserDao {
 		 jdbcTemplate.update(Regsql, new Object[] { student.getUserName(), student.getPassword(), student.getfName(),
 				     student.getmName(),student.getlName(),student.getYearOfJoin(), student.getEmail(), student.getBranch(), student.getDob() });
 	}
+	
+	@Override
+	public void register(User user) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public User validateUser(Login login) {
@@ -39,23 +45,14 @@ public class UserDaoImpl implements UserDao {
 
 class UserMapper implements RowMapper<User> {
 
-	  public User mapRow1ResultSet rs, int arg1) throws SQLException {
+	  public User mapRow ( ResultSet rs, int arg1) throws SQLException {
 	    User user = new User();
 
-	    user.setUsername(rs.getString("username"));
+	    user.setUserName(rs.getString("username"));
 	    user.setPassword(rs.getString("password"));
-	    user.setFirstname(rs.getString("firstname"));
-	    user.setLastname(rs.getString("lastname"));
-	    user.setEmail(rs.getString("email"));
-	    user.setAddress(rs.getString("address"));
-	    user.setPhone(rs.getInt("phone"));
-
+	    user.setState(rs.getString("state"));
 	    return user;
 	  }
 
-	@Override
-	public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	}

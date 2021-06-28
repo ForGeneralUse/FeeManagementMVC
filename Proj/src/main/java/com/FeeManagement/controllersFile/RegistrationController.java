@@ -1,5 +1,39 @@
 package com.FeeManagement.controllersFile;
 
-public class RegistrationController {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.FeeManagement.ServiceFile.UserDaoImpl;
+import com.FeeManagement.entityFile.User;
+
+@Controller
+public class RegistrationController {
+	
+		@Autowired
+		public UserDaoImpl userDao;
+		
+		@RequestMapping(value="/register", method= RequestMethod.GET)
+		public ModelAndView showRegister(HttpServletRequest req, HttpServletResponse res) {
+				
+			ModelAndView mav = new ModelAndView("register");
+			mav.addObject("user",new User());
+			
+			return mav;
+			
+		}
+		
+		@RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+		public ModelAndView addUser(HttpServletRequest req, HttpServletResponse res, @ModelAttribute("user") User user) {
+			userDao.register(user);
+			
+			return new ModelAndView("welcome", "username", user.getUserName());
+			
+		}
 }

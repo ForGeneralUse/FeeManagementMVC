@@ -10,10 +10,12 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd ">
-	
-	
 	<ctx:annotation-config></ctx:annotation-config>
 	<ctx:component-scan base-package="com.FeeManagement"></ctx:component-scan>
 	
-	
+	<import resource="classpath:jbr/config/user-beans.xml" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
 </beans>
