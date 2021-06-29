@@ -1,0 +1,80 @@
+delimiter $$
+
+CREATE DATABASE `myusers` /*!40100 DEFAULT CHARACTER SET utf8 */$$
+
+delimiter $$
+
+CREATE TABLE `admin_table` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `phoneno` int(11) NOT NULL,
+  `loginstatus` varchar(45) NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `phoneno_UNIQUE` (`phoneno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `fee_due_table` (
+  `sid` int(11) NOT NULL,
+  `fid` int(11) NOT NULL,
+  `lastdateofsubmission` date NOT NULL,
+  `feedue` int(11) NOT NULL,
+  `totalamount` int(11) NOT NULL,
+  `mop` varchar(45) DEFAULT 'cash',
+  PRIMARY KEY (`sid`),
+  KEY `sid` (`sid`),
+  KEY `fid` (`fid`),
+  CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `student_table` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fid` FOREIGN KEY (`fid`) REFERENCES `finance_manager_table` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `finance_manager_table` (
+  `id` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `fname` varchar(45) NOT NULL,
+  `mname` varchar(45) DEFAULT ' ',
+  `lname` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `phoneno` int(11) NOT NULL,
+  `loginstatus` varchar(45) NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `student_table` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `fname` varchar(45) NOT NULL,
+  `mname` varchar(45) DEFAULT ' ',
+  `lname` varchar(45) NOT NULL,
+  `yearofjoin` int(11) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `branch` varchar(45) NOT NULL,
+  `dob` date NOT NULL,
+  `loginstatus` varchar(45) NOT NULL DEFAULT 'active',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+delimiter $$
+
+CREATE TABLE `login_table` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
+
+

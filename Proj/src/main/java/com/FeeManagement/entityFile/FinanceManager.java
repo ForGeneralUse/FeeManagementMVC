@@ -5,7 +5,7 @@ public class FinanceManager {
 	private String userName;
 	private String password;
 	private String fName;
-	private String mName = "";
+	private String mName = " ";
 	private String lName;
 	private String email;
 	private int phoneNo;
