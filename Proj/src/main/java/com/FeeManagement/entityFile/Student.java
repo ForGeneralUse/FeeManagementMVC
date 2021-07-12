@@ -2,6 +2,13 @@ package com.FeeManagement.entityFile;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "studnet_table")
 public class Student {
 	private int sid;
 	private String userName;
@@ -14,7 +21,9 @@ public class Student {
 	private String branch;
 	private String loginStatus;
 	private Date dob;
-
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getSid() {
 		return sid;
 	}

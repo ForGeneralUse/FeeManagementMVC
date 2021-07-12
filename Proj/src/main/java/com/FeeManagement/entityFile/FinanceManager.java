@@ -1,5 +1,13 @@
 package com.FeeManagement.entityFile;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "finance_manager_table")
 public class FinanceManager {
 	private int fid;
 	private String userName;
@@ -11,6 +19,8 @@ public class FinanceManager {
 	private int phoneNo;
 	private String loginStatus;
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getFid() {
 		return fid;
 	}

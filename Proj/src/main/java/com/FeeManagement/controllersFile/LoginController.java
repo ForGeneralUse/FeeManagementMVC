@@ -25,6 +25,7 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("login", new Login());
 		return mav;
+//		return "home";
 	}
 
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)

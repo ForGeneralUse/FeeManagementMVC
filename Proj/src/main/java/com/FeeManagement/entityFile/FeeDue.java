@@ -2,14 +2,23 @@ package com.FeeManagement.entityFile;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "fee_due_table")
 public class FeeDue {
 	private int sid;
 	private int fid;
-	private Date lastDateOfJoin;
+	private Date lastDateOfSubmission;
 	private int FeeDue;
 	private int totalAmount;
 	private String mop;
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getSid() {
 		return sid;
 	}
@@ -26,12 +35,12 @@ public class FeeDue {
 		this.fid = fid;
 	}
 
-	public Date getLastDateOfJoin() {
-		return lastDateOfJoin;
+	public Date getLastDateOfSubmission() {
+		return lastDateOfSubmission;
 	}
 
-	public void setLastDateOfJoin(Date lastDateOfJoin) {
-		this.lastDateOfJoin = lastDateOfJoin;
+	public void setLastDateOfSubmission(Date lastDateOfSubmission) {
+		this.lastDateOfSubmission = lastDateOfSubmission;
 	}
 
 	public int getFeeDue() {

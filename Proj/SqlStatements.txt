@@ -19,6 +19,8 @@ CREATE TABLE `admin_table` (
 
 delimiter $$
 
+
+
 CREATE TABLE `fee_due_table` (
   `sid` int(11) NOT NULL,
   `fid` int(11) NOT NULL,
@@ -76,5 +78,4 @@ CREATE TABLE `login_table` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8$$
-
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.FeeManagement.ServiceFile.UserService;
+import com.FeeManagement.entityFile.Student;
 import com.FeeManagement.entityFile.User;
 
 @Controller
@@ -23,17 +24,17 @@ public class RegistrationController {
 		public ModelAndView showRegister(HttpServletRequest req, HttpServletResponse res) {
 				
 			ModelAndView mav = new ModelAndView("register");
-			mav.addObject("user",new User());
+			mav.addObject("student",new Student());
 			
 			return mav;
 			
 		}
 		
 		@RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-		public ModelAndView addUser(HttpServletRequest req, HttpServletResponse res, @ModelAttribute("user") User user) {
-			userService.register(user);
+		public ModelAndView addUser(HttpServletRequest req, HttpServletResponse res, @ModelAttribute("student") Student student) {
+			userService.register(student);
 			
-			return new ModelAndView("welcome", "username", user.getUserName());
+			return new ModelAndView("welcome", "username", student.getUserName());
 			
 		}
 }
