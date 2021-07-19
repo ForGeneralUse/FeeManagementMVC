@@ -22,6 +22,10 @@ public class Student {
 	private String loginStatus;
 	private Date dob;
 	
+	
+	
+	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getSid() {

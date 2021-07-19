@@ -19,6 +19,7 @@ import com.FeeManagement.entityFile.User;
 public class LoginController {
 	@Autowired
 	UserService userService;
+	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest req, HttpServletResponse res) {

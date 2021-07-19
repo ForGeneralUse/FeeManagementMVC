@@ -14,6 +14,8 @@ public class User {
 	private String username;
 	private String password;
 	private String state;
+	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {

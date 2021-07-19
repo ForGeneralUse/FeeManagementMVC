@@ -11,6 +11,7 @@ import javax.persistence.Table;
 public class Login {
 	private String userName;
 	private String password;
+	
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)

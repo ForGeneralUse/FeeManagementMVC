@@ -16,6 +16,7 @@ public class Admin {
 	private int phoneNo;
 	private String loginStatus;
 	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
